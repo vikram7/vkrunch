@@ -1,7 +1,6 @@
 Text file compression utility based on Lempel–Ziv–Welch (LZW) data compression algorithm.
 
-To compress a file (using the_last_question.txt) as an example:
-In your terminal, run the following:
+To compress a file (using the_last_question.txt) as an example. In your terminal, run the following:
 ```
 ruby vkrunch.rb -c the_last_question.txt
 ```
