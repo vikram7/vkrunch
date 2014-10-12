@@ -1,7 +1,7 @@
 def compress(to_compress)
   dictionary = (0..255).to_a.map {|element| element.chr}
   output = Array.new
-  broken = to_compress.split('')
+  broken = to_compress.gsub("’", "'").split('')
   s = broken.first
   broken.each do |character|
     c = character
@@ -24,7 +24,6 @@ def uncompress(to_uncompress)
   to_uncompress.each do |index|
     previous = current
     current = index
-    binding.pry
     if current < dictionary.length
       s = dictionary[current]
       output << s
