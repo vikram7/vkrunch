@@ -42,6 +42,7 @@ def uncompress(to_uncompress)
       dictionary << s
     end
   end
+  output.shift
   output
 end
 
@@ -69,16 +70,18 @@ else
     ratio = 1 - newfilesize / filesize.to_f
     puts
     puts outputname + " created"
-    puts "____________________________________________"
-    puts "Original File Size  : " + filesize.to_s + "K"
-    puts "VKrunched File Size : " + newfilesize.to_s + "K"
-    puts "Compression Time took : " + "%.1f" % (endtime - starttime).to_s + " seconds"
-    puts "VKrunched File is " + (ratio*100).to_s + "% smaller than the original file"
-    puts "____________________________________________"
+    puts "________________________________________________________"
+    puts "Original file name    : " + filename
+    puts "VKrunched file name   : " + outputname
+    puts "Original file size    : " + filesize.to_s + "K"
+    puts "VKrunched file size   : " + newfilesize.to_s + "K"
+    puts "Compression took " + "%.1f" % (endtime - starttime).to_s + " seconds"
+    puts "VKrunched file is " + (ratio*100).to_s + "% smaller than the original file"
+    puts "________________________________________________________"
   elsif option == "-u"
     unpacked = from_binary(contents)
     uncompressed = uncompress(unpacked).join
-    outputname = "jie.txt"
+    outputname = "_" + filename.gsub(".vkrunch","")
     f = File.new(outputname, "w")
     f.write(uncompressed)
   end
