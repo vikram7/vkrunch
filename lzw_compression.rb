@@ -1,3 +1,8 @@
+file = File.open(ARGV[0], "r")
+contents = file.read
+file.close
+contents_size = contents.size
+
 def compress(to_compress)
   dictionary = (0..255).to_a.map {|element| element.chr}
   output = Array.new
@@ -24,7 +29,6 @@ def uncompress(to_uncompress)
   to_uncompress.each do |index|
     previous = current
     current = index
-    binding.pry
     if current < dictionary.length
       s = dictionary[current]
       output << s
@@ -37,3 +41,14 @@ def uncompress(to_uncompress)
   end
   output
 end
+
+
+compressed = compress(contents)
+compressed_size = compressed.size
+uncompressed = uncompress(compressed)
+compression_ratio = (1 - compressed_size / contents_size.to_f) * 100
+
+puts "Original File Size: " + contents_size.to_s
+puts "Compressed File Size: " + compressed_size.to_s
+puts "Compression Ratio: " + "%.1f" % compression_ratio.to_s + "%"
+
