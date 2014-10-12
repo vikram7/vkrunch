@@ -4,6 +4,7 @@ Oct 12, 2014
 - Added command line file support
   - '-c' and '-u' options for compress / uncompress
 - though the character count is lower in the compressed output, the 25k file 'the_last_question.txt' is getting converted to 44k, which I am guessing is because of the type of data structure I am using (includes commas between dictionary indices, which have a cost)
+  - fixed this issue by converting new integer dictionary array to binary with array.pack("S*") and binary back to the array with array.unpack("S*")
 
 Oct 11, 2014
 - Implemented algorithm in pseudocode
