@@ -1,10 +1,19 @@
-require 'pry'
+starttime = Time.now
 option = ARGV[0]
 filename = ARGV[1]
 file = File.open(filename, "r")
 contents = file.read
+filesize = file.size/1000
 file.close
 contents_size = contents.size
+
+def to_binary(array)
+  array.pack("S*")
+end
+
+def from_binary(binary)
+  binary.unpack("S*")
+end
 
 def compress(to_compress)
   dictionary = (0..255).to_a.map {|element| element.chr}
@@ -21,8 +30,7 @@ def compress(to_compress)
       s = c
     end
   end
-  compressed = output.join(",")
-  compressed
+  output
 end
 
 def uncompress(to_uncompress)
@@ -48,13 +56,24 @@ end
 
 if option == "-c"
   compressed = compress(contents)
+  packed = to_binary(compressed)
   outputname = filename + ".vkrunch"
   f = File.new(outputname, "w")
-  f.write(compressed)
+  f.write(packed)
+  endtime = Time.now
+  newfilesize = f.size/1000
+  ratio = 1 - newfilesize / filesize.to_f
+  puts
   puts outputname + " created"
+  puts "____________________________________________"
+  puts "Original File Size  : " + filesize.to_s + "K"
+  puts "VKrunched File Size : " + newfilesize.to_s + "K"
+  puts "Compression Time took : " + "%.1f" % (endtime - starttime).to_s + " seconds"
+  puts "VKrunched File is " + (ratio*100).to_s + "% smaller than the original file"
+  puts "____________________________________________"
 elsif option == "-u"
-  contents = contents.split(",").map! {|x| x.to_i}
-  uncompressed = uncompress(contents).join
+  unpacked = from_binary(contents)
+  uncompressed = uncompress(unpacked).join
   outputname = "jie.txt"
   f = File.new(outputname, "w")
   f.write(uncompressed)
@@ -64,10 +83,3 @@ else
   puts "ruby vkrunch.rb -u <file.txt.vkrunch>"
   puts "Available options are -c to compress and -u to uncompress."
 end
-
-# compressed_size = compressed.size
-# compression_ratio = (1 - compressed_size / contents_size.to_f) * 100
-# puts "Original File Size: " + contents_size.to_s
-# puts "Compressed File Size: " + compressed_size.to_s
-# puts "Compression Ratio: " + "%.1f" % compression_ratio.to_s + "%"
-
