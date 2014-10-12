@@ -29,7 +29,7 @@ Oct 12, 2014
 - ________________________________________________________
 
 Oct 11, 2014
-- Implemented algorithm in pseudocode
+- Wrote up algorithm in pseudocode
 - Converted pseudocode to Ruby
 - Adjusted code for edge cases
   - compression at beginning of text
