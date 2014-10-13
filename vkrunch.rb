@@ -51,6 +51,10 @@ if ARGV[0] != "-c" && ARGV[0] != "-u" || !File.exist?(ARGV[1])
   puts "To use this utility, please see below:"
   puts "To compress file.txt           : ruby vkrunch.rb -c file.txt"
   puts "To uncompress file.txt.vkrunch : ruby vkrunch.rb -u file.txt.vkrunch"
+elsif ARGV[0] == "-u" && !ARGV[1].match(/.\.(vkrunch)$/)
+  puts "Sorry, vkrunch extensions are the only type supported right now."
+  puts "To compress file.txt           : ruby vkrunch.rb -c file.txt"
+  puts "To uncompress file.txt.vkrunch : ruby vkrunch.rb -u file.txt.vkrunch"
 else
   starttime = Time.now
   option = ARGV[0]
