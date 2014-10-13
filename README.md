@@ -4,7 +4,7 @@ To compress a file (using the_last_question.txt) as an example. In your terminal
 ```
 ruby vkrunch.rb -c the_last_question.txt
 ```
-You should a printout like the one below and your current folder will now have a file called the_last_question.txt.vkrunch:
+You should see a printout like the one below and your current folder will now have a file called the_last_question.txt.vkrunch:
 ```
 the_last_question.txt.vkrunch created
 ________________________________________________________
