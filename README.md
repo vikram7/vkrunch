@@ -1,6 +1,6 @@
 Text file compression utility based on Lempel–Ziv–Welch (LZW) data compression algorithm.
 
-To compress a file (using Kant's Fundamental Principles of the Metaphysic of Morals) as an example. In your terminal, run the following:
+To compress a file (using Kant's Fundamental Principles of the Metaphysic of Morals as an example), in your terminal, run the following command:
 ```
 ruby vkrunch.rb -c fundamental_kant.txt
 ```
