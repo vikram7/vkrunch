@@ -88,6 +88,8 @@ else
       outputname = "_" + filename.gsub(".vkrunch","")
       f = File.new(outputname, "w")
       f.write(uncompressed)
+      puts "file uncompressed"
+      puts outputname + " created"
     end
   end
 end
