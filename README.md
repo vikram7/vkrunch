@@ -19,6 +19,7 @@ Oct 12, 2014
   - fixed this issue by converting new integer dictionary array to binary with array.pack("S*") and binary back to the array with array.unpack("S*")
 - The dictionary in compress method was running in O(n^2) time due to call to Array#index. Redesigning the dictionary as a hash sped up the compression from 4 seconds for the_last_question.txt to 0.03 seconds.
 
+```
 the_last_question.txt.vkrunch created
 ________________________________________________________
 Original file name    : the_last_question.txt
@@ -28,8 +29,8 @@ VKrunched file size   : 16K
 Compression took 0.0282 seconds
 VKrunched file is 36.0% smaller than the original file
 ________________________________________________________
-
-
+```
+```
 fundamental_kant.txt.vkrunch created
 ________________________________________________________
 Original file name    : fundamental_kant.txt
@@ -39,8 +40,8 @@ VKrunched file size   : 71K
 Compression took 0.1989 seconds
 VKrunched file is 59.7% smaller than the original file
 ________________________________________________________
-
-
+```
+```
 moby_dick.txt.vkrunch created
 ________________________________________________________
 Original file name    : moby_dick.txt
@@ -50,6 +51,7 @@ VKrunched file size   : 460K
 Compression took 1.6630 seconds
 VKrunched file is 61.6% smaller than the original file
 ________________________________________________________
+```
 
 Oct 11, 2014
 - Wrote up algorithm in pseudocode
